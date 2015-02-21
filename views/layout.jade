@@ -63,23 +63,23 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
             span.sr-only Google Plus
 
   .container.ng-cloak.page-container
-      h1(ng-bind="Page.getTitle()", ng-if="Page.getTitle()")
+    h1(ng-bind="Page.getTitle()", ng-if="Page.getTitle()")
 
-      ul(class="breadcrumb", ng-if="Page.getBreadcrumbs()")
-        li: a(href="/") Home
-        li(ng-repeat="crumb in Page.getBreadcrumbs()")
-          a(ng-show="crumb.url", href="{{crumb.url}}") {{crumb.title}}
-          span(ng-show="crumb.url", class="divider")
-          // Current
-          span(ng-hide="crumb.url") {{crumb.title}}
+    ul(class="breadcrumb", ng-if="Page.getBreadcrumbs()")
+      li: a(href="/") Home
+      li(ng-repeat="crumb in Page.getBreadcrumbs()")
+        a(ng-show="crumb.url", href="{{crumb.url}}") {{crumb.title}}
+        span(ng-show="crumb.url", class="divider")
+        // Current
+        span(ng-hide="crumb.url") {{crumb.title}}
 
-      ul(class="nav nav-tabs", role="tablist", ng-if="Page.getTabs() && Page.getTabs().length > 1")
-        li(ng-repeat="tab in Page.getTabs()", ng-class="{active: $location.path() === tab.url}")
-          a(href="{{tab.url}}") {{tab.title}}
-          span(class="divider")
+    ul(class="nav nav-tabs", role="tablist", ng-if="Page.getTabs() && Page.getTabs().length > 1")
+      li(ng-repeat="tab in Page.getTabs()", ng-class="{active: $location.path() === tab.url}")
+        a(href="{{tab.url}}") {{tab.title}}
+        span(class="divider")
 
-      ng-view(autoscroll, class="view-animate")
-        block content
+    ng-view(autoscroll, class="view-animate")
+      block content
           
   footer
     p.container © #{new Date().getFullYear()} Rafał Enden
