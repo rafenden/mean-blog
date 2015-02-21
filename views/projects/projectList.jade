@@ -1,0 +1,13 @@
+p There are {{projects.length ? projects.length : 0}} projects.
+
+a.btn.btn-primary.btn-lg(href="/projects/add")
+  span.glyphicon.glyphicon-plus
+  |  Add project
+
+div(ng-repeat="project in projects")
+  h3: a(ng-href="/project/{{project.slug}}") {{project.title}}
+  p
+    i.glyphicon.glyphicon-calendar
+    |  Posted on {{project.createdAt | date:'medium'}}
+
+  div(markdown="project.teaser")

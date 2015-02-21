@@ -1,0 +1,7 @@
+section(ng-controller="ProjectRecentListCtrl")
+  h3 Recent projects
+  article(ng-repeat="project in projects")
+    h5: a(ng-href="/projects/{{project.slug}}") {{project.title}}
+
+  a(href="/projects") See more
+    span.glyphicon.glyphicon-chevron-right

@@ -1,0 +1,120 @@
+@import 'nib'
+@import 'styles/variables'
+@import 'bower_components/bootstrap-stylus/stylus/bootstrap'
+
+// @import 'https://raw.github.com/daneden/animate.css/master/animate.css'
+// @import '//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.0/paper/bootstrap.min.css'
+
+@import 'ace'
+@import 'highlight'
+
+.nav-tabs
+  margin-bottom: 15px
+
+.form-group.required label:after
+  content: '*'
+  color: red
+  margin-left: 3px
+
+.cancel-separator
+  margin-left: 10px
+  margin-right: 5px
+  
+h1, h2, h3, h4, h5
+  a
+    display: block
+
+body.page-not-found h1
+  text-align: center
+
+.text-lg
+  font-size: $font-size-large
+  line-height: $line-height-large
+  
+.text-xl
+  font-size: $font-size-extra-large
+  line-height: $line-height-extra-large
+
+.input-xl
+  input-size(auto, $padding-large-vertical, $padding-large-horizontal, $font-size-h2, $line-height-large, $border-radius-large)
+  
+@media (max-width: $screen-sm-max)
+  .navbar-social-links
+    position: absolute
+    top: 0
+    right: 15px
+  
+.navbar-container
+  position: relative
+
+.navbar-nav > li > a
+  border-radius: $border-radius-base
+
+.navbar-brand small
+  display: block
+  font-size: $font-size-small
+
+// Social share
+.social-share
+  height: 66px
+  margin: 20px 0 30px 0
+
+.addthis_floating_style.addthis_counter_style
+  padding: 0 0 4px 0
+  line-height: 16px
+  font-size: 14px
+
+.addthis_toolbox
+  top: 0 !important
+  left: 0 !Important
+  width: auto !important
+  height: auto !important
+  position: relative
+
+.social-share .addthis_toolbox
+  position: inherit
+
+.addthis_internal_container
+  width: auto !important
+
+.addthis_internal_container > a
+  float: left !important
+  position: relative !important
+  padding: 0 3px !important
+
+.addthis_toolbox.bubbles
+  float: left
+  margin-right: 20px
+  height: 60px !important
+  position: relative !important
+
+.addthis_button_expanded
+  height: 37px !important
+
+// Follow me links
+.social-link
+  margin-left: 7px
+.fa-drupal.fa-colorized
+  color: #3C6BB9
+.fa-github.fa-colorized
+  color: #333333
+.fa-linkedin-square.fa-colorized
+  color: #1683BB
+.fa-twitter.fa-colorized
+  color: #55ACEE
+.fa-google-plus-square.fa-colorized
+  color: #DD4B39
+  
+.page-container
+  margin-bottom: 40px
+  
+footer
+  padding: 20px 0
+  border-top: 1px solid $gray-lighter
+
+.go-back
+  display: block
+  margin-top: 20px
+
+.blog-post-body
+  margin-bottom: 30px

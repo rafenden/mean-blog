@@ -1,0 +1,120 @@
+include mixins
+
+doctype
+html(ng-app="app", ng-controller="PageCtrl", lang="en")
+  head
+    meta(charset="utf8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title(ng-bind="Page.getTitleWithSuffix()")=Config.siteName
+
+    // CSS
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/readable/bootstrap.min.css")
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/styles/monokai_sublime.min.css")
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+    link(rel="stylesheet", href="/styles/app.css")
+
+    // Favicon
+    link(rel="apple-touch-icon", sizes="57x57", href="/favicons/apple-icon-57x57.png")
+    link(rel="apple-touch-icon", sizes="60x60", href="/favicons/apple-icon-60x60.png")
+    link(rel="apple-touch-icon", sizes="72x72", href="/favicons/apple-icon-72x72.png")
+    link(rel="apple-touch-icon", sizes="76x76", href="/favicons/apple-icon-76x76.png")
+    link(rel="apple-touch-icon", sizes="114x114", href="/favicons/apple-icon-114x114.png")
+    link(rel="apple-touch-icon", sizes="120x120", href="/favicons/apple-icon-120x120.png")
+    link(rel="apple-touch-icon", sizes="144x144", href="/favicons/apple-icon-144x144.png")
+    link(rel="apple-touch-icon", sizes="152x152", href="/favicons/apple-icon-152x152.png")
+    link(rel="apple-touch-icon", sizes="180x180", href="/favicons/apple-icon-180x180.png")
+    link(rel="icon", type="image/png", sizes="192x192",  href="/favicons/android-icon-192x192.png")
+    link(rel="icon", type="image/png", sizes="32x32", href="/favicons/favicon-32x32.png")
+    link(rel="icon", type="image/png", sizes="96x96", href="/favicons/favicon-96x96.png")
+    link(rel="icon", type="image/png", sizes="16x16", href="/favicons/favicon-16x16.png")
+    link(rel="manifest", href="/favicons/manifest.json")
+    meta(name="msapplication-TileColor", content="#ffffff")
+    meta(name="msapplication-TileImage", content="/ms-icon-144x144.png")
+    meta(name="theme-color", content="#ffffff")
+
+  body(ng-class="Page.getBodyClass()")
+    nav(role="navigation").navbar.navbar-default.navbar-static-top
+      .container.navbar-container
+        .navbar-header
+          a.navbar-brand(href="/") enden.com
+            sup beta
+            small Web development, gadgets and other stuff
+          
+        ul.nav.navbar-nav
+          li: a(href="/") Home
+          li: a(href="/blog") Blog
+          li: a(href="/projects") Projects
+        p.navbar-text.navbar-right.navbar-social-links
+          span.hidden-xs.hidden-sm I can be found at: 
+          a.navbar-link.social-link(href="https://www.drupal.org/u/rafal.enden")
+            i.fa.text-xl.fa-drupal.fa-colorized
+            span.sr-only drupal.org
+          a.navbar-link.social-link(href="https://github.com/rafalenden")
+            i.fa.text-xl.fa-github.fa-colorized
+            span.sr-only GitHub
+          a.navbar-link.social-link(href="https://linkedin.com/in/rafalenden")
+            i.fa.text-xl.fa-linkedin-square.fa-colorized
+            span.sr-only LinkedIn
+          a.navbar-link.social-link(href="https://twitter.com/RafalEnden")
+            i.fa.text-xl.fa-twitter.fa-colorized
+            span.sr-only Twitter
+          a.navbar-link.social-link(href="https://plus.google.com/100241749532114106014")
+            i.fa.text-xl.fa-google-plus-square.fa-colorized
+            span.sr-only Google Plus
+
+  .container.ng-cloak.page-container
+      h1(ng-bind="Page.getTitle()", ng-if="Page.getTitle()")
+
+      ul(class="breadcrumb", ng-if="Page.getBreadcrumbs()")
+        li: a(href="/") Home
+        li(ng-repeat="crumb in Page.getBreadcrumbs()")
+          a(ng-show="crumb.url", href="{{crumb.url}}") {{crumb.title}}
+          span(ng-show="crumb.url", class="divider")
+          // Current
+          span(ng-hide="crumb.url") {{crumb.title}}
+
+      ul(class="nav nav-tabs", role="tablist", ng-if="Page.getTabs() && Page.getTabs().length > 1")
+        li(ng-repeat="tab in Page.getTabs()", ng-class="{active: $location.path() === tab.url}")
+          a(href="{{tab.url}}") {{tab.title}}
+          span(class="divider")
+
+      ng-view(autoscroll, class="view-animate")
+        block content
+          
+  footer
+    p.container © #{new Date().getFullYear()} Rafał Enden
+          
+  // Set up config variables.
+  script
+    | var Config = {};
+    each val, key in Config
+      | Config['#{key}'] = '#{val}';
+    
+  // JavaScript libraries
+  script(src="//cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min.js")
+
+  // AddThis
+  script(type="text/javascript", src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d657006441f4b5", async)
+
+  // AngularJS and core modules
+  script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js")
+  script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js")
+  //-script(src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js")
+  //-script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.min.js")
+
+  //- Angular UI
+  //-script(src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js")
+
+  // Additional Angular libraries
+  script(src="/bower_components/angular-load/angular-load.min.js")
+
+  // App
+  script(src="/app/app.js")
+  script(src="/app/ace.js")
+  script(src="/app/highlight.js")
+  script(src="/app/common.js")
+  script(src="/app/markdown.js")
+  script(src="/app/home.js")
+  script(src="/app/blog.js")
+  script(src="/app/projects.js")

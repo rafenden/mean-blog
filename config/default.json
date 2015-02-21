@@ -1,0 +1,11 @@
+{
+  "port": 3001,
+  "prerenderUrl": "http://localhost:3000",
+  "clientside":
+  {
+    "endpointUrl": "http://localhost:3000",
+    "disqus_shortname": "sandbox-enden",
+    "siteName": "Rafal Enden",
+    "imagesCdn": "http://googledrive.com/host/0By99GotPsSxwfms2bGdrM2ctUlBXU195VUlMazRKSlVXUGxGbk00eDBnWVozdWtDdmd3NjQ"
+  }
+}

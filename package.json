@@ -1,0 +1,46 @@
+{
+  "name": "enden.com",
+  "version": "0.0.1",
+  "description": "Rafal Enden personal blog.",
+  "homepage": "http://enden.com",
+  "bugs": {
+    "url": "http://redmine.enden.com",
+    "email": "website-bugs@enden.com"
+  },
+  "license": "BSD-2-Clause",
+  "author": {
+    "name": "Rafal Enden",
+    "email": "website-dev@enden.com",
+    "url": "http://enden.com"
+  },
+  "files": {},
+  "main": "app.coffee",
+  "bin": {},
+  "man": {},
+  "repository": {},
+  "scripts": {
+    "start": "supervisor server.coffee",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "config": {},
+  "dependencies": {
+    "coffee-script": "*",
+    "express": "*",
+    "jade": "*",
+    "config": "*",
+    "body-parser": "*",
+    "stylus": "*",
+    "nib": "*",
+    "ng-classify": "*",
+    "prerender-node": "*",
+    "errorhandler": "*"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "bundledDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "private": true
+}

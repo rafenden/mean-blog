@@ -1,0 +1,14 @@
+p There are {{posts.length ? posts.length : 0}} posts
+
+a.btn.btn-primary.btn-lg(href="/blog/add")
+  i.glyphicon.glyphicon-plus
+  |  Add blog post
+
+div(ng-repeat="post in posts")
+  h3: a(ng-href="/blog/{{post.slug}}") {{post.title}}
+  p
+    i.fa.fa-calendar
+    |  Posted on {{post.createdAt | date:'medium'}}
+
+  div(markdown="post.teaser")
+

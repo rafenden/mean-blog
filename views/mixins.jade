@@ -1,0 +1,70 @@
+//- https://dev.twitter.com/docs/api/1.1/get/friends/ids
+
+mixin endpoint(method, url)
+  .panel.panel-default
+    .panel-heading Endpoint &nbsp;
+      span.label.label-default(title='Method')=method
+    .panel-body
+      a(href=url)
+        | http://api.enden.com
+        =url
+
+mixin input-parameters
+  .panel.panel-default
+    .panel-heading Parameters
+    table.table.table-hover
+      thead
+        tr
+          th Name
+          th Type
+          th Description
+          th Default value
+      tbody
+        block
+
+mixin input-parameter(name, type, description, defaultValue, required)
+  tr
+    td
+      code=name
+      block
+      if required
+        |  <span class="label.label-danger">Required</span>
+    td=type
+      block
+    td=description
+      block
+    td=defaultValue
+      block
+
+mixin output-parameters
+  .panel.panel-default
+    .panel-heading Returns
+    table.table.table-hover
+      thead
+        tr
+          th Name
+          th Type
+          th Description
+          th Default value
+      tbody
+        block
+
+mixin output-parameter(name, type, description, defaultValue, required)
+  tr
+    td
+      code=name
+      block
+      if required
+        |  <span class="label.label-danger">Required</span>
+    td=type
+      block
+    td=description
+      block
+    td=defaultValue
+      block
+
+mixin horizontal-form-field(label, name)
+  .form-group
+    label.col-sm-2.control-label(for='field-#{name}')=label
+    .col-sm-10
+      block

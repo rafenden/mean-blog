@@ -1,0 +1,10 @@
+section(ng-controller="BlogRecentListCtrl")
+  h3 Recent blog posts
+  article(ng-repeat="post in posts")
+    h5: a(ng-href="/blog/{{post.slug}}") {{post.title}}
+    p
+      i.fa.fa-calendar
+      |  Posted on {{post.createdAt | date:'medium'}}
+
+  a(href="/blog") See more
+    span.glyphicon.glyphicon-chevron-right

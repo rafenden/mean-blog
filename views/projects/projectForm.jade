@@ -1,0 +1,45 @@
+form(role="form")
+  // Title
+  .form-group.required
+    label(for="field-title") Title
+    input#field-title.form-control(type="text", required, ng-model="project.title")
+
+  // Published
+  .form-group: label Published &nbsp;
+    input(type="checkbox", ng-model="project.status")
+
+  // Slug
+  .form-group.required
+    label(for="field-slug") Slug
+    .input-group
+      .input-group-addon http://enden.com/projects/
+      input#field-slug.form-control(type="text", required, ng-model="project.slug")
+
+  // Teaser
+  .form-group.required
+    .row
+      .col-sm-6
+        label Project teaser
+        .form-control.ace-editor#field-teaser(ui-ace="{mode: 'markdown'}", ng-model="project.teaser")
+      .col-sm-6
+        label Teaser preview
+        .panel.panel-info
+          .panel-body.markdown-preview(markdown="project.teaser")
+
+  // Body
+  .form-group.required
+    .row
+      .col-sm-6
+        label Project body
+        .form-control.ace-editor#field-body(ui-ace="{mode: 'markdown'}", ng-model="project.body")
+      .col-sm-6
+        label Project body preview
+        .panel.panel-info
+          .panel-body.markdown-preview(markdown="project.body")
+
+  // Submit button
+  .well
+    button.btn.btn-primary.btn-lg(type="submit", ng-click="submitPost()") Save project
+    span.cancel-separator or
+    // TODO: Fixe slug when adding new project and cancel with filled slug
+    a(ng-href="/projects/{{project.slug}}") Cancel
