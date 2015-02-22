@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log
+files/*
+!files/images/.gitkeep
+vendor/*
+__/
+.idea/
+bower_components/
