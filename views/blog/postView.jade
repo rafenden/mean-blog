@@ -4,16 +4,17 @@ p.blog-post-created
 
 .blog-post-body(markdown="post.body")
 
-script.
-  var addthis_config = {"data_track_addressbar": true};
-
 .social-share
-  .addthis_toolbox.addthis_floating_style.addthis_counter_style.bubbles
-    a.addthis_button_facebook_like('fb:like:layout'="box_count")
-    a.addthis_button_facebook_share('fb:share:layout'="box_count")
-    a.addthis_button_tweet('tw:count'="vertical")
-    a.addthis_button_google_plusone('g:plusone:size'="tall")
-    a.addthis_counter
+  h2 Share
+  a.share-button.share-facebook(ng-href="http://www.facebook.com/sharer.php?u={{ post.url() }}&title={{ post.title }}", target="_blank")
+    i.fa.fa-3x.fa-facebook-square.fa-colorized
+    span.sr-only Facebook
+  a.share-button.share-gplus(ng-href="https://plus.google.com/share?url={{ post.url() }}", target="_blank")
+    i.fa.fa-3x.fa-google-plus-square.fa-colorized
+    span.sr-only Google+
+  a.share-button.share-twitter(ng-href="https://twitter.com/intent/tweet?url={{ post.url() }}&text={{ post.title }}", target="_blank")
+    i.fa.fa-3x.fa-twitter-square.fa-colorized
+    span.sr-only Twitter
 
 h2(ng-show="showComments") Comments
 
@@ -23,8 +24,7 @@ disqus(
   disqus-url="{{ post.url() }}" disqus-title="{{ post.title }}"
   ready-to-bind="{{ showComments }}"
 )
-a(href="http://disqus.com", class="dsq-brlink", ng-hide="showComments") blog comments powered by
-  span.logo-disqus Disqus
+a(href="http://disqus.com", class="dsq-brlink", ng-hide="showComments") blog comments powered by Disqus
 
 p: a.go-back(href='/blog')
   span.glyphicon.glyphicon-chevron-left

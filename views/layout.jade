@@ -83,19 +83,16 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
           
   footer
     p.container © #{new Date().getFullYear()} Rafał Enden
-          
+
   // Set up config variables.
   script
     | var Config = {};
     each val, key in Config
       | Config['#{key}'] = '#{val}';
-    
+
   // JavaScript libraries
   script(src="//cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js")
   script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min.js")
-
-  // AddThis
-  script(type="text/javascript", src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54d657006441f4b5", async)
 
   // AngularJS and core modules
   script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js")

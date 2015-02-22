@@ -154,37 +154,3 @@ class disqus extends Directive
                   @page.url = scope.disqus_url
                   @page.title = scope.disqus_title
     }
-
-
-class disqusCount extends Directive
-  constructor: ($window) ->
-    return {
-      restrict: 'EAC'
-      scope:
-        disqus_shortname: '@disqusShortname'
-        disqus_identifier: '@disqusIdentifier'
-        disqus_title: '@disqusTitle'
-        disqus_url: '@disqusUrl'
-        disqus_category_id: '@disqusCategoryId'
-        disqus_disable_mobile: '@disqusDisableMobile'
-        readyToBind: '@'
-      template: '<div id="disqus_thread"></div>'
-      link: (scope) ->
-        
-    }
-
-class addthisToolbox extends Directive
-  constructor: ($timeout) ->
-    return {
-      restrict : 'A'
-      transclude : true
-      replace : true
-      template : '<div ng-transclude></div>'
-      link : ($scope, element, attrs) ->
-        $timeout ->
-          addthis.init()
-          addthis.toolbox $(element).get(), {},
-            url: attrs.url,
-            title: "My Awesome Blog",
-            description: 'Checkout this awesome post on blog.me'
-    }

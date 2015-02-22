@@ -85,5 +85,3 @@ httpServer.listen config.get('http').port, ->
 
 httpsServer.listen config.get('https').port, ->
   console.log 'Express server listening on port %d in %s mode', config.get('https').port, app.settings.env
-
-
