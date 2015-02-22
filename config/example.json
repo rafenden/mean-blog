@@ -1,0 +1,21 @@
+{
+  "prerenderUrl": "http://localhost:3000",
+  "http":
+  {
+    "port": 3001,
+    "endpointUrl": "http://localhost:3000"
+  },
+  "https":
+  {
+    "port": 4001,
+    "endpointUrl": "https://localhost:4000",
+    "privateKey": "certificates/MYDOMAIN.com.key",
+    "certificate": "certificates/MYDOMAIN.com.cert"
+  },
+  "clientside":
+  {
+    "siteName": "My example site name",
+    "disqus_shortname": "my_example_disqus_shortname",
+    "imagesCdn": "http://cdn.example.com/images"
+  }
+}

@@ -6,3 +6,7 @@ vendor/*
 __/
 .idea/
 bower_components/
+certificates/*
+!certificates/.gitkeep
+config/*
+!config/example.json
