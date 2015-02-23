@@ -62,7 +62,7 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
             i.fa.text-xl.fa-google-plus-square.fa-colorized
             span.sr-only Google Plus
 
-  .container.ng-cloak.page-container
+  .container.page-container
     h1(ng-bind="Page.getTitle()", ng-if="Page.getTitle()")
 
     ul(class="breadcrumb", ng-if="Page.getBreadcrumbs()")
@@ -105,6 +105,10 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
 
   // Additional Angular libraries
   script(src="/bower_components/angular-load/angular-load.min.js")
+
+  // Social share buttons
+  script(src="/bower_components/angular-social/angular-social.js")
+  link(rel="stylesheet", href="/bower_components/angular-social/angular-social.css")
 
   // App
   script(src="/app/app.js")

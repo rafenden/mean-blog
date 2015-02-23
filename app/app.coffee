@@ -5,6 +5,7 @@ class Application extends App
       'ngRoute'
       'ui.ace'
       'angularLoad'
+      'ngSocial'
     ]
 
 

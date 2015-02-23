@@ -4,17 +4,11 @@ p.blog-post-created
 
 .blog-post-body(markdown="post.body")
 
-.social-share
-  h2 Share
-  a.share-button.share-facebook(ng-href="http://www.facebook.com/sharer.php?u={{ post.url() }}&title={{ post.title }}", target="_blank")
-    i.fa.fa-3x.fa-facebook-square.fa-colorized
-    span.sr-only Facebook
-  a.share-button.share-gplus(ng-href="https://plus.google.com/share?url={{ post.url() }}", target="_blank")
-    i.fa.fa-3x.fa-google-plus-square.fa-colorized
-    span.sr-only Google+
-  a.share-button.share-twitter(ng-href="https://twitter.com/intent/tweet?url={{ post.url() }}&text={{ post.title }}", target="_blank")
-    i.fa.fa-3x.fa-twitter-square.fa-colorized
-    span.sr-only Twitter
+ul(ng-social-buttons, data-url="post.url()", data-title="post.title")
+  li: strong Share:
+  li.ng-social-facebook Facebook
+  li.ng-social-google-plus Google+
+  li.ng-social-twitter Twitter
 
 h2(ng-show="showComments") Comments
 
