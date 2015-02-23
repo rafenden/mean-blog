@@ -154,3 +154,24 @@ class disqus extends Directive
                   @page.url = scope.disqus_url
                   @page.title = scope.disqus_title
     }
+
+
+class popup extends Directive
+  constructor: ->
+    return {
+    restrict: 'EA'
+    link: (scope, element, attrs) ->
+      if attrs.popup? and attrs.popup isnt 'popup'
+        dimensions = attrs.popup.split 'x'
+      else
+        dimensions = [500, 400]
+
+      width = dimensions[0]
+      height = dimensions[1]
+      element.attr 'target', 'popup'
+
+      element.on 'click', (event) ->
+        event.preventDefault()
+        popupWindow = window.open(this.href, 'popup', "toolbars=0,scrollbars=1,location=0,statusbars=0,menubars=0,resizable=1,width=#{width},height=#{height},left=50,top=50")
+        popupWindow.focus()
+    }
