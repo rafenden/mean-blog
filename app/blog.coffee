@@ -77,6 +77,7 @@ class BlogAddCtrl extends Controller
       {title: 'Blog', url: '/blog'}
       {title: Page.getTitle()}
     ]
+    Page.setBodyClass ['blog-post-add', 'blog-post-form']
 
     $scope.customUrl = false
 
@@ -109,6 +110,8 @@ class BlogAddCtrl extends Controller
 # View blog post
 class BlogViewCtrl extends Controller
   constructor: ($scope, $routeParams, BlogService, BlogHelper, Page, $location, $route) ->
+    Page.setBodyClass ['blog-post-view']
+
     $scope.post = null
     $scope.showComments = false
     $scope.disqus_shortname = Config.disqus_shortname
@@ -141,6 +144,7 @@ class BlogEditCtrl extends Controller
         {title: 'Edit'}
       ]
       Page.setTabs BlogHelper.getTabs results
+      Page.setBodyClass ['blog-post-edit', 'blog-post-form']
 
       $scope.post = results
 
@@ -175,6 +179,7 @@ class BlogEditCtrl extends Controller
 # Delete blog post
 class BlogDeleteCtrl extends Controller
   constructor: ($scope, $routeParams, BlogService, BlogHelper, Page, $location) ->
+    Page.setBodyClass ['blog-post-delete']
     BlogService.getPost($routeParams.slug).then (results) ->
       Page.setTitle "Delete #{results.title}"
       Page.setBreadcrumbs [

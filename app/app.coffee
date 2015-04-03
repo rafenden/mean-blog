@@ -80,9 +80,7 @@ class Page extends Factory
         @bodyClasses.push 'page-' + $location.path().substr(1).replace(/\//g, '-')
 
       setBodyClass: (cssClass) ->
-        @bodyClasses = [
-          cssClass
-        ]
+        @bodyClasses = cssClass
 
       getBodyClass: ->
         @bodyClasses
