@@ -19,6 +19,8 @@
     "angular-highlightjs": "~0.3.0",
     "oclazyload": "~0.3.7",
     "angular-load": "~0.2.0",
-    "angular-social": "~0.1.1"
+    "angular-social": "~0.1.1",
+    "ngstorage": "~0.3.0",
+    "angular-loading-bar": "~0.7.1"
   }
 }

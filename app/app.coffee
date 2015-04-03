@@ -6,6 +6,8 @@ class Application extends App
       'ui.ace'
       'angularLoad'
       'ngSocial'
+      'ngStorage'
+      'angular-loading-bar'
     ]
 
 
