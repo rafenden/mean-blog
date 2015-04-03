@@ -119,4 +119,4 @@ class PageCtrl extends Controller
 class NotFoundCtrl extends Controller
   constructor: ($scope, Page) ->
     Page.setTitle '404 Not Found'
-    Page.setBodyClass 'page-not-found'
+    Page.setBodyClass ['page-not-found']
