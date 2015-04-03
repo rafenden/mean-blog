@@ -5,7 +5,7 @@ section(ng-controller="BlogRecentListCtrl").block
     h3.blog-post-teaser-title: a(ng-href="/blog/{{post.slug}}") {{post.title}}
     p
       i.fa.fa-calendar
-      |  Posted on {{post.createdAt | date:'medium'}}
+      |  Posted on {{post.createdAt | date:'mediumDate'}}
     .blog-post-teaser-body(markdown="{{post.teaser}}")
 
   a(href="/blog") See more
