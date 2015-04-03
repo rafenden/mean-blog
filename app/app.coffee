@@ -8,6 +8,7 @@ class Application extends App
       'ngSocial'
       'ngStorage'
       'angular-loading-bar'
+      'angularUtils.directives.dirDisqus'
     ]
 
 

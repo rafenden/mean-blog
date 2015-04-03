@@ -12,12 +12,14 @@ ul(ng-social-buttons, data-url="post.url()", data-title="post.title")
 
 h2(ng-show="showComments") Comments
 
-disqus(
+dir-disqus(
   disqus-shortname="{{disqus_shortname}}"
   disqus-identifier="{{post._id}}"
-  disqus-url="{{post.url()}}" disqus-title="{{post.title}}"
+  disqus-url="{{post.url()}}"
+  disqus-title="{{post.title}}"
   ready-to-bind="{{showComments}}"
 )
+
 a(href="http://disqus.com", class="dsq-brlink", ng-hide="showComments") blog comments powered by Disqus
 
 p: a.go-back(href='/blog')
