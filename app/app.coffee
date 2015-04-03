@@ -40,6 +40,9 @@ class Page extends Factory
 
   constructor: ($location) ->
     return {
+      isFrontPage: ->
+        @getCurrentURL() is '/'
+
       setDefaultTitle: ->
         @titleSuffix = @title = Config.siteName
 

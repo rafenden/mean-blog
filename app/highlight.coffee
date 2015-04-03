@@ -9,7 +9,6 @@ class Highlight extends Service
     hljs.highlightBlock(element)
 
 
-
 class code extends Directive
   constructor: ($window, Highlight) ->
     return restrict: 'E', link: ($scope, element, attrs) ->

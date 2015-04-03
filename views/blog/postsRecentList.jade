@@ -1,10 +1,12 @@
-section(ng-controller="BlogRecentListCtrl")
-  h3 Recent blog posts
-  article(ng-repeat="post in posts")
-    h5: a(ng-href="/blog/{{post.slug}}") {{post.title}}
+section(ng-controller="BlogRecentListCtrl").block
+  h2.block-title Recent blog posts
+
+  article.blog-post-teaser(ng-repeat="post in posts")
+    h3.blog-post-teaser-title: a(ng-href="/blog/{{post.slug}}") {{post.title}}
     p
       i.fa.fa-calendar
       |  Posted on {{post.createdAt | date:'medium'}}
+    .blog-post-teaser-body(markdown="{{post.teaser}}")
 
   a(href="/blog") See more
     span.glyphicon.glyphicon-chevron-right

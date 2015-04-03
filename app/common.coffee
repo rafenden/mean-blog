@@ -26,6 +26,9 @@ class img extends Directive
     return restrict: 'E', link: ($scope, element, attrs) ->
       if attrs.src? and attrs.src.indexOf '/images/' is 0
         element.attr 'src', attrs.src.replace '/images', Config.imagesCdn
+      # Add captions to images.
+      if attrs.title?
+        element.after "<div class=\"image-caption\">#{attrs.title}</div>"
 
 
 class friendlyUrl extends Filter

@@ -46,7 +46,7 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
         ul.nav.navbar-nav
           li: a(href="/") Home
           li: a(href="/blog") Blog
-          li: a(href="/projects") Projects
+          //li: a(href="/projects") Projects
 
         p.navbar-text.navbar-right.navbar-social-links
           span.hidden-xs.hidden-sm I can be found at: 
@@ -67,7 +67,7 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
             span.sr-only Google Plus
 
   .container.page-container
-    h1(ng-bind="Page.getTitle()", ng-if="Page.getTitle()")
+    h1(ng-bind="Page.getTitle()", ng-if="Page.getTitle()", ng-hide="Page.isFrontPage()")
 
     ul(class="breadcrumb", ng-if="Page.getBreadcrumbs()")
       li: a(href="/") Home
@@ -86,7 +86,7 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
       block content
           
   footer
-    p.container © #{new Date().getFullYear()} Rafał Enden
+    p.container © 2014-#{new Date().getFullYear()} #{Config.siteName}
 
   // Set up config variables.
   script
@@ -123,4 +123,4 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
   script(src="/app/markdown.js")
   script(src="/app/home.js")
   script(src="/app/blog.js")
-  script(src="/app/projects.js")
+  //script(src="/app/projects.js")
