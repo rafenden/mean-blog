@@ -26,7 +26,7 @@ form(role="form", name="blogForm")
     .row
       .col-sm-6
         label Post teaser
-        .form-control.ace-editor#field-teaser(ui-ace="{mode: 'markdown'}", ng-model="post.teaser", name="teaser")
+        .form-control.ace-editor#field-teaser(ui-ace="{mode: 'markdown', onLoad: aceLoaded}", ng-model="post.teaser", name="teaser")
       .col-sm-6
         label Teaser preview
         .panel.panel-info

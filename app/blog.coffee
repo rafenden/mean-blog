@@ -46,6 +46,8 @@ class BlogHelper extends Factory
       {title: 'Edit', url: "/blog/#{post.slug}/edit"}
       {title: 'Delete', url: "/blog/#{post.slug}/delete"}
     ]
+  @getAceConfig: ->
+
 
 
 # List of blog posts
@@ -82,6 +84,16 @@ class BlogAddCtrl extends Controller
       friendlySlug = $filter('friendlyUrl')($scope.post.title)
       if !$scope.customUrl
         $scope.post.slug = friendlySlug
+
+    $scope.aceLoaded = (editor) ->
+      editor.setOptions
+        minLines: 5
+        maxLines: 'Infinity'
+        tabSize: 2
+        autoScrollEditorIntoView: true
+        wrap: true
+        showLineNumbers: false
+        showGutter: false
 
     $scope.disableAutoUrl = ->
       $scope.customUrl = true
@@ -133,6 +145,16 @@ class BlogEditCtrl extends Controller
       $scope.post = results
 
     $scope.updateSlug = $scope.disableAutoUrl = ->
+
+    $scope.aceLoaded = (editor) ->
+      editor.setOptions
+        minLines: 5
+        maxLines: 'Infinity'
+        tabSize: 2
+        autoScrollEditorIntoView: true
+        wrap: true
+        showLineNumbers: false
+        showGutter: false
 
     $scope.submitPost = ->
       tagsArray = []
