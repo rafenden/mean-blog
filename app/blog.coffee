@@ -65,7 +65,7 @@ class BlogListCtrl extends Controller
 # List of recent blog posts
 class BlogRecentListCtrl extends Controller
   constructor: ($scope, BlogService, Page) ->
-    BlogService.getList().then (results) ->
+    BlogService.getList(10).then (results) ->
       $scope.posts = results.posts
 
 
