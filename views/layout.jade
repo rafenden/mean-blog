@@ -38,7 +38,9 @@ html(ng-app="app", ng-controller="PageCtrl", lang="en")
     nav(role="navigation").navbar.navbar-default.navbar-static-top
       .container.navbar-container
         .navbar-header
-          a.navbar-brand(href="/") enden.com
+          a.navbar-brand(href="/")
+            img.pull-left.card3d(src="#{Config.imagesCdn}/avatar.png")
+            | enden.com
             sup beta
             small Web development, gadgets and other stuff
 

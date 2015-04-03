@@ -53,9 +53,15 @@ body.page-not-found h1
 .navbar-nav > li > a
   border-radius: $border-radius-base
 
-.navbar-brand small
-  display: block
-  font-size: $font-size-small
+.navbar-brand
+  height: auto
+  width: 340px
+  small
+    display: block
+    font-size: $font-size-small
+    line-height: 100%
+    margin-top: 5px
+
 
 // Social share
 .social-share
@@ -106,3 +112,13 @@ footer
 
 .block-title
   margin-bottom: 40px
+
+.card3d
+  transform: translateZ(0)
+  margin-right: 10px
+  width: 50px
+  height: 50px
+  transform-style: preserve-3d
+  backface-visibility: hidden
+  display: flex
+  position: relative
