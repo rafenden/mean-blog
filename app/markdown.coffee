@@ -10,19 +10,17 @@ class MarkdownConverter extends Provider
 
 class markdown extends Directive
   constructor: (MarkdownConverter, $compile) ->
-    return restrict: 'AE', link: ($scope, element, attrs) ->
-      if attrs.markdown
-        $scope.$watch attrs.markdown, (newVal) ->
-          html = if newVal then MarkdownConverter.makeHtml(newVal) else ''
-          converdetHtml = $compile(html)($scope);
-          element.html ''
-          element.append converdetHtml
-      else
-        html = MarkdownConverter.makeHtml element.html()
-        element.html html
+    return restrict: 'A', link: ($scope, element, $attrs) ->
+      $attrs.$observe 'markdown', (newValue) ->
+        element.html ''
+        if newValue
+          html = MarkdownConverter.makeHtml newValue
+          convertedHtml = $compile(html)($scope)
+          element.append convertedHtml
+
 
 class markdownFilter extends Filter
-  constructor: ($sce, $compile) ->
+  constructor: ($sce) ->
     return (value) ->
       converter = new Showdown.converter()
       $sce.trustAsHtml converter.makeHtml value ? ''

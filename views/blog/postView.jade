@@ -2,7 +2,7 @@ p.blog-post-created
   i.fa.fa-calendar
   |  Posted on {{post.createdAt | date:'medium'}}
 
-.blog-post-body(markdown="post.body")
+.blog-post-body(markdown="{{post.body}}")
 
 ul(ng-social-buttons, data-url="post.url()", data-title="post.title")
   li: strong Share:
@@ -13,10 +13,10 @@ ul(ng-social-buttons, data-url="post.url()", data-title="post.title")
 h2(ng-show="showComments") Comments
 
 disqus(
-  disqus-shortname="{{ disqus_shortname }}"
-  disqus-identifier="{{ post._id }}"
-  disqus-url="{{ post.url() }}" disqus-title="{{ post.title }}"
-  ready-to-bind="{{ showComments }}"
+  disqus-shortname="{{disqus_shortname}}"
+  disqus-identifier="{{post._id}}"
+  disqus-url="{{post.url()}}" disqus-title="{{post.title}}"
+  ready-to-bind="{{showComments}}"
 )
 a(href="http://disqus.com", class="dsq-brlink", ng-hide="showComments") blog comments powered by Disqus
 

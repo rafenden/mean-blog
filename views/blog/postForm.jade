@@ -30,18 +30,18 @@ form(role="form", name="blogForm")
       .col-sm-6
         label Teaser preview
         .panel.panel-info
-          .panel-body.markdown-preview(markdown="post.teaser")
+          .panel-body.markdown-preview(markdown="{{post.teaser}}")
 
   // Body
   .form-group.required
     .row
       .col-sm-6
         label Post body
-        .form-control.ace-editor#field-body(ui-ace="{mode: 'markdown'}", ng-model="post.body")
+        .form-control.ace-editor#field-body(ui-ace="{mode: 'markdown', onLoad: aceLoaded}", ng-model="post.body")
       .col-sm-6
         label Post body preview
         .panel.panel-info
-          .panel-body.markdown-preview(markdown="post.body")
+          .panel-body.markdown-preview(markdown="{{post.body}}")
 
   // Submit button
   .well
