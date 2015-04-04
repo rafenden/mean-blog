@@ -1,0 +1,8 @@
+a.btn.btn-primary.btn-lg(href="/page/add")
+  i.glyphicon.glyphicon-plus
+  |  Add page
+
+article.page-teaser(ng-repeat="page in pages")
+  h3.page-teaser-title: a(ng-href="/page/{{page.slug}}") {{page.title}}
+  .page-teaser-body(markdown="{{page.teaser}}")
+

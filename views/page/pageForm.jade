@@ -1,0 +1,44 @@
+form(role="form", name="pageForm")
+  // Title
+  .form-group.required
+    label.text-lg(for="field-title") Title
+    input#field-title.form-control.input-xl(type="text", required, ng-model="page.title", name="title", ng-change="updateSlug()")
+
+  // Published
+  .form-group: label Published &nbsp;
+    input(type="checkbox", ng-model="page.status")
+
+  // Slug
+  .form-group.required
+    label(for="field-slug") Slug
+    .input-group
+      .input-group-addon http://enden.com/page/
+      input#field-slug.form-control(type="text", required, ng-model="page.slug", name="slug", ng-change="disableAutoUrl()")
+
+  // Teaser
+  .form-group.required
+    .row
+      .col-sm-6
+        label Page teaser
+        .form-control.ace-editor#field-teaser(ui-ace="{mode: 'markdown', onLoad: aceLoaded}", ng-model="page.teaser", name="teaser")
+      .col-sm-6
+        label Teaser preview
+        .panel.panel-info
+          .panel-body.markdown-preview(markdown="{{page.teaser}}")
+
+  // Body
+  .form-group.required
+    .row
+      .col-sm-6
+        label Page body
+        .form-control.ace-editor#field-body(ui-ace="{mode: 'markdown', onLoad: aceLoaded}", ng-model="page.body")
+      .col-sm-6
+        label Page body preview
+        .panel.panel-info
+          .panel-body.markdown-preview(markdown="{{page.body}}")
+
+  // Submit button
+  .well
+    button.btn.btn-primary.btn-lg(type="submit", ng-click="submitPage()" ng-disabled="pageForm.$invalid") <i class="fa fa-floppy-o"></i> Save page
+    span.cancel-separator or
+    a(href='/page/{{page.slug}}') Cancel

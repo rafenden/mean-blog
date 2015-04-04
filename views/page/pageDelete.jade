@@ -1,0 +1,8 @@
+p Are you sure you want to delete page {{page.title}}?
+
+form.form-horizontal.well(role='form')
+  button.btn.btn-danger(type='submit', ng-click='deletePage()')
+    i.glyphicon.glyphicon-trash
+    |  Delete
+  |  or&nbsp;
+  a(href='/') Cancel
