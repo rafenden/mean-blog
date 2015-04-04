@@ -45,9 +45,9 @@ class ProjectHelper extends Factory
 
 # List of projects
 class ProjectListCtrl extends Controller
-  constructor: ($scope, ProjectService, Page) ->
-    Page.setTitle 'Projects'
-    Page.setBreadcrumbs [
+  constructor: ($scope, ProjectService, Site) ->
+    Site.setTitle 'Projects'
+    Site.setBreadcrumbs [
       {title: 'Projects'}
     ]
 
@@ -56,18 +56,18 @@ class ProjectListCtrl extends Controller
 
 # List of recent projects
 class ProjectRecentListCtrl extends Controller
-  constructor: ($scope, ProjectService, Page) ->
+  constructor: ($scope, ProjectService, Site) ->
     ProjectService.getList().then (results) ->
       $scope.posts = results.posts
 
 # Create project
 class ProjectAddCtrl extends Controller
-  constructor: ($scope, $routeParams, ProjectService, ProjectHelper, Page, $location, $filter) ->
+  constructor: ($scope, $routeParams, ProjectService, ProjectHelper, Site, $location, $filter) ->
     # $filter('linky')(text, target)
-    Page.setTitle 'Add project'
-    Page.setBreadcrumbs [
+    Site.setTitle 'Add project'
+    Site.setBreadcrumbs [
       {title: 'Projects', url: '/projects'}
-      {title: Page.getTitle()}
+      {title: Site.getTitle()}
     ]
 
     $scope.submitPost = ->
@@ -78,28 +78,28 @@ class ProjectAddCtrl extends Controller
 
 # View project
 class ProjectViewCtrl extends Controller
-  constructor: ($scope, $routeParams, ProjectService, ProjectHelper, Page) ->
+  constructor: ($scope, $routeParams, ProjectService, ProjectHelper, Site) ->
     ProjectService.getPost($routeParams.slug).then (results) ->
-      Page.setTitle results.title
-      Page.setBreadcrumbs [
+      Site.setTitle results.title
+      Site.setBreadcrumbs [
         {title: 'Projects', url: '/projects'}
         {title: results.title}
       ]
-      Page.setTabs ProjectHelper.getTabs results
+      Site.setTabs ProjectHelper.getTabs results
 
       $scope.post = results
 
 # Edit project
 class ProjectEditCtrl extends Controller
-  constructor: (ProjectService, ProjectHelper, Page, $scope, $routeParams, $location) ->
+  constructor: (ProjectService, ProjectHelper, Site, $scope, $routeParams, $location) ->
     ProjectService.getPost($routeParams.slug).then (results) ->
-      Page.setTitle "Edit #{results.title}"
-      Page.setBreadcrumbs [
+      Site.setTitle "Edit #{results.title}"
+      Site.setBreadcrumbs [
         {title: 'Projects', url: '/projects'}
         {title: results.title, url: "/projects/#{results.slug}"}
         {title: 'Edit'}
       ]
-      Page.setTabs ProjectHelper.getTabs results
+      Site.setTabs ProjectHelper.getTabs results
 
       $scope.post = results
 
@@ -109,15 +109,15 @@ class ProjectEditCtrl extends Controller
 
 # Delete project
 class ProjectDeleteCtrl extends Controller
-  constructor: ($scope, $routeParams, ProjectService, ProjectHelper, Page, $location) ->
+  constructor: ($scope, $routeParams, ProjectService, ProjectHelper, Site, $location) ->
     ProjectService.getPost($routeParams.slug).then (results) ->
-      Page.setTitle "Delete #{results.title}"
-      Page.setBreadcrumbs [
+      Site.setTitle "Delete #{results.title}"
+      Site.setBreadcrumbs [
         {title: 'Projects', url: '/projects'}
         {title: results.title, url: "/projects/#{results.slug}"}
         {title: 'Delete'}
       ]
-      Page.setTabs ProjectHelper.getTabs results
+      Site.setTabs ProjectHelper.getTabs results
 
       $scope.post = results
 

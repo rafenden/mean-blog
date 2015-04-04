@@ -8,6 +8,6 @@ class HomeRoutes extends Config
 
 # Home controller
 class HomeCtrl extends Controller
-  constructor: ($scope, Page) ->
-    Page.setDefaultTitle()
+  constructor: ($scope, Site) ->
+    Site.setDefaultTitle()
 

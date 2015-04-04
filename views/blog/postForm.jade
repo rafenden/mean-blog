@@ -4,9 +4,9 @@ form(role="form", name="blogForm")
     label.text-lg(for="field-title") Title
     input#field-title.form-control.input-xl(type="text", required, ng-model="post.title", name="title", ng-change="updateSlug()")
 
-  // Published - disabled temporary
-  //.form-group: label Published &nbsp;
-  //  input(type="checkbox", ng-model="post.status")
+  // Published
+  .form-group: label Published &nbsp;
+    input(type="checkbox", ng-model="post.status")
 
   // Slug
   .form-group.required

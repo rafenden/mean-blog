@@ -30,8 +30,8 @@ class Runtime extends Run
     $rootScope.$on '$routeChangeStart', (event, current, previous) ->
 
 
-# Page factory
-class Page extends Factory
+# Site factory
+class Site extends Factory
   @title: ''
   @titleSuffix: ''
   @breadcrumbs: []
@@ -103,24 +103,34 @@ class Page extends Factory
 
       getBaseUrl: ->
         $location.protocol() + '://' + $location.host() + ':' + $location.port()
+
+      initAceEditor: (editor) ->
+        editor.setOptions
+          minLines: 5
+          maxLines: 'Infinity'
+          tabSize: 2
+          autoScrollEditorIntoView: true
+          wrap: true
+          showLineNumbers: false
+          showGutter: false
     }
 
 
-# Page controller
-class PageCtrl extends Controller
-  constructor: ($scope, Page, $location, $window, angularLoad) ->
+# Site controller
+class SiteCtrl extends Controller
+  constructor: ($scope, Site, $location, $window, angularLoad) ->
     $scope.$location = $location
-    $scope.Page = Page
+    $scope.Site = Site
 
     $scope.$on '$routeChangeSuccess', (event, current, previous) ->
-      Page.setTitle event.currentScope.pageTitle
-      Page.setDefaults()
+      Site.setTitle event.currentScope.pageTitle
+      Site.setDefaults()
 
     # $window.scrollTo 0, 0
 
 
 # Not found controller
 class NotFoundCtrl extends Controller
-  constructor: ($scope, Page) ->
-    Page.setTitle '404 Not Found'
-    Page.setBodyClass ['page-not-found']
+  constructor: ($scope, Site) ->
+    Site.setTitle '404 Not Found'
+    Site.setBodyClass ['page-not-found']

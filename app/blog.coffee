@@ -8,31 +8,21 @@ class BlogRoutes extends Config
     .when '/blog/add',
       controller: 'BlogAddCtrl'
       templateUrl: '/views/blog/postForm.html'
-      permission: 'add blog post'
       resolve: ['angularLoad', (angularLoad) ->
         angularLoad.loadScript '//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js'
       ]
     .when '/blog/:slug',
       controller: 'BlogViewCtrl'
       templateUrl: '/views/blog/postView.html'
-      title: ':postTitle'
-      actionTitle: 'View'
     .when '/blog/:slug/edit',
       controller: 'BlogEditCtrl'
       templateUrl: '/views/blog/postForm.html'
-      permission: 'edit blog post'
-      tabTitle: 'Edit'
-
-      title: 'Edit :postTitle'
-      actionTitle: 'Edit'
       resolve: ['angularLoad', (angularLoad) ->
         angularLoad.loadScript '//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js'
       ]
     .when '/blog/:slug/delete',
       controller: 'BlogDeleteCtrl'
       templateUrl: '/views/blog/postDelete.html'
-      permission: 'delete blog post'
-      tabTitle: 'Delete'
 
 
 # Blog controller
@@ -49,12 +39,11 @@ class BlogHelper extends Factory
   @getAceConfig: ->
 
 
-
 # List of blog posts
 class BlogListCtrl extends Controller
-  constructor: ($scope, BlogService, Page) ->
-    Page.setTitle 'Blog'
-    Page.setBreadcrumbs [
+  constructor: ($scope, BlogService, Site) ->
+    Site.setTitle 'Blog'
+    Site.setBreadcrumbs [
       {title: 'Blog'}
     ]
 
@@ -64,37 +53,29 @@ class BlogListCtrl extends Controller
 
 # List of recent blog posts
 class BlogRecentListCtrl extends Controller
-  constructor: ($scope, BlogService, Page) ->
+  constructor: ($scope, BlogService, Site) ->
     BlogService.getList(10).then (results) ->
       $scope.posts = results.posts
 
 
 # Create blog post
 class BlogAddCtrl extends Controller
-  constructor: ($scope, $routeParams, BlogService, BlogHelper, Page, $location, $filter) ->
-    Page.setTitle 'Add blog post'
-    Page.setBreadcrumbs [
+  constructor: ($scope, $routeParams, BlogService, BlogHelper, Site, $location, $filter) ->
+    Site.setTitle 'Add blog post'
+    Site.setBreadcrumbs [
       {title: 'Blog', url: '/blog'}
-      {title: Page.getTitle()}
+      {title: Site.getTitle()}
     ]
-    Page.setBodyClass ['blog-post-add', 'blog-post-form']
+    Site.setBodyClass ['blog-post-add', 'blog-post-form']
 
     $scope.customUrl = false
 
     $scope.updateSlug = ->
-      friendlySlug = $filter('friendlyUrl')($scope.post.title)
       if !$scope.customUrl
+        friendlySlug = $filter('friendlyUrl')($scope.post.title)
         $scope.post.slug = friendlySlug
 
-    $scope.aceLoaded = (editor) ->
-      editor.setOptions
-        minLines: 5
-        maxLines: 'Infinity'
-        tabSize: 2
-        autoScrollEditorIntoView: true
-        wrap: true
-        showLineNumbers: false
-        showGutter: false
+    $scope.aceLoaded = Site.initAceEditor
 
     $scope.disableAutoUrl = ->
       $scope.customUrl = true
@@ -109,8 +90,8 @@ class BlogAddCtrl extends Controller
 
 # View blog post
 class BlogViewCtrl extends Controller
-  constructor: ($scope, $routeParams, BlogService, BlogHelper, Page, $location, $route) ->
-    Page.setBodyClass ['blog-post-view']
+  constructor: ($scope, $routeParams, BlogService, BlogHelper, Site, $location, $route) ->
+    Site.setBodyClass ['blog-post-view']
 
     $scope.post = null
     $scope.showComments = false
@@ -121,44 +102,36 @@ class BlogViewCtrl extends Controller
       # TODO: check if redirections works with PhantomJS
       if !results then $location.path "/not-found?from=blog/#{$routeParams.slug}"
 
-      Page.setTitle results.title
-      Page.setBreadcrumbs [
+      Site.setTitle results.title
+      Site.setBreadcrumbs [
         {title: 'Blog', url: '/blog'}
         {title: results.title}
       ]
-      Page.setTabs BlogHelper.getTabs results
+      console.log Site
+      Site.setTabs BlogHelper.getTabs results
       $scope.post = results
       $scope.showComments = true
 
 
 # Edit blog post
 class BlogEditCtrl extends Controller
-  constructor: (BlogService, BlogHelper, Page, $scope, $routeParams, $location) ->
+  constructor: (BlogService, BlogHelper, Site, $scope, $routeParams, $location) ->
     BlogService.getPost($routeParams.slug).then (results) ->
       if !results then $location.path '/not-found'
 
-      Page.setTitle "Edit #{results.title}"
-      Page.setBreadcrumbs [
+      Site.setTitle "Edit #{results.title}"
+      Site.setBreadcrumbs [
         {title: 'Blog', url: '/blog'}
         {title: results.title, url: "/blog/#{results.slug}"}
         {title: 'Edit'}
       ]
-      Page.setTabs BlogHelper.getTabs results
-      Page.setBodyClass ['blog-post-edit', 'blog-post-form']
+      Site.setTabs BlogHelper.getTabs results
+      Site.setBodyClass ['blog-post-edit', 'blog-post-form']
 
       $scope.post = results
 
     $scope.updateSlug = $scope.disableAutoUrl = ->
-
-    $scope.aceLoaded = (editor) ->
-      editor.setOptions
-        minLines: 5
-        maxLines: 'Infinity'
-        tabSize: 2
-        autoScrollEditorIntoView: true
-        wrap: true
-        showLineNumbers: false
-        showGutter: false
+    $scope.aceLoaded = Site.initAceEditor
 
     $scope.submitPost = ->
       tagsArray = []
@@ -178,16 +151,16 @@ class BlogEditCtrl extends Controller
 
 # Delete blog post
 class BlogDeleteCtrl extends Controller
-  constructor: ($scope, $routeParams, BlogService, BlogHelper, Page, $location) ->
-    Page.setBodyClass ['blog-post-delete']
+  constructor: ($scope, $routeParams, BlogService, BlogHelper, Site, $location) ->
+    Site.setBodyClass ['blog-post-delete']
     BlogService.getPost($routeParams.slug).then (results) ->
-      Page.setTitle "Delete #{results.title}"
-      Page.setBreadcrumbs [
+      Site.setTitle "Delete #{results.title}"
+      Site.setBreadcrumbs [
         {title: 'Blog', url: '/blog'}
         {title: results.title, url: "/blog/#{results.slug}"}
         {title: 'Delete'}
       ]
-      Page.setTabs BlogHelper.getTabs results
+      Site.setTabs BlogHelper.getTabs results
 
       $scope.post = results
 
@@ -200,7 +173,7 @@ class BlogDeleteCtrl extends Controller
 class BlogService extends Service
   endpointUrl = "#{Config.endpointUrl}/blog"
 
-  constructor: (@$http, @$location, @Page) ->
+  constructor: (@$http, @$location, @Site) ->
 
   # Get list of blog posts
   getList: (limit = 0) ->
@@ -210,7 +183,7 @@ class BlogService extends Service
 
   # Get single post
   getPost: (slug) ->
-    baseUrl = @Page.getBaseUrl() + '/blog/'
+    baseUrl = @Site.getBaseUrl() + '/blog/'
     @$http.get("#{endpointUrl}?slug=#{slug}")
     .then (results) ->
       if results.data.posts[0]?

@@ -1,5 +1,5 @@
 class a extends Directive
-  constructor: ($location, Page) ->
+  constructor: ($location, Site) ->
     return restrict: 'E', link: ($scope, element, attrs) ->
       className = attrs.activeLink ? 'active'
       path = attrs.href ? attrs['ng-href']
