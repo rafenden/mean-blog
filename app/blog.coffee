@@ -143,8 +143,7 @@ class BlogEditCtrl extends Controller
 
       BlogService.savePost($scope.post)
       .success (data, status, headers, config) ->
-        console.log data, status
-#        $location.path "/blog/#{$scope.post.slug}"
+        $location.path "/blog/#{$scope.post.slug}"
       .error (data, status, headers, config) ->
         alert angular.toJson data
 
