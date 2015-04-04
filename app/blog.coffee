@@ -25,7 +25,7 @@ class BlogRoutes extends Config
       templateUrl: '/views/blog/postDelete.html'
 
 
-# Blog controller
+# Blog helper
 class BlogHelper extends Factory
   constructor: ->
     return BlogHelper
@@ -36,7 +36,6 @@ class BlogHelper extends Factory
       {title: 'Edit', url: "/blog/#{post.slug}/edit"}
       {title: 'Delete', url: "/blog/#{post.slug}/delete"}
     ]
-  @getAceConfig: ->
 
 
 # List of blog posts

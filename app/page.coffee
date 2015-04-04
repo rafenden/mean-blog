@@ -68,7 +68,7 @@ class PageAddCtrl extends Controller
 
 # View page page
 class PageViewCtrl extends Controller
-  constructor: ($scope, $routeParams, PageService, Site, $location, $route) ->
+  constructor: ($scope, $routeParams, PageService, PageHelper, Site, $location, $route) ->
     Site.setBodyClass ['page-view']
 
     $scope.page = null
@@ -84,13 +84,14 @@ class PageViewCtrl extends Controller
       Site.setBreadcrumbs [
         {title: results.title}
       ]
+      Site.setTabs PageHelper.getTabs results
       $scope.page = results
       $scope.showComments = true
 
 
 # Edit page page
 class PageEditCtrl extends Controller
-  constructor: (PageService, Site, $scope, $routeParams, $location) ->
+  constructor: (PageService, PageHelper, Site, $scope, $routeParams, $location) ->
     PageService.getPage($routeParams.slug).then (results) ->
       if !results then $location.path '/not-found'
 
@@ -99,6 +100,7 @@ class PageEditCtrl extends Controller
         {title: results.title, url: "/page/#{results.slug}"}
         {title: 'Edit'}
       ]
+      Site.setTabs PageHelper.getTabs results
       Site.setBodyClass ['page-edit', 'page-form']
 
       $scope.page = results
@@ -123,7 +125,7 @@ class PageEditCtrl extends Controller
 
 # Delete page page
 class PageDeleteCtrl extends Controller
-  constructor: ($scope, $routeParams, PageService, Site, $location) ->
+  constructor: ($scope, $routeParams, PageService, PageHelper, Site, $location) ->
     Site.setBodyClass ['page-delete']
     PageService.getPage($routeParams.slug).then (results) ->
       Site.setTitle "Delete #{results.title}"
@@ -131,12 +133,26 @@ class PageDeleteCtrl extends Controller
         {title: results.title, url: "/page/#{results.slug}"}
         {title: 'Delete'}
       ]
+      Site.setTabs PageHelper.getTabs results
 
       $scope.page = results
 
     $scope.deletePage = ->
       PageService.deletePage($scope.page._id).then (results) ->
         $location.path '/'
+
+
+# Page helper
+class PageHelper extends Factory
+  constructor: ->
+    return PageHelper
+
+  @getTabs: (page) ->
+    [
+      {title: 'View', url: "/page/#{page.slug}"}
+      {title: 'Edit', url: "/page/#{page.slug}/edit"}
+      {title: 'Delete', url: "/page/#{page.slug}/delete"}
+    ]
 
 
 # Page service
