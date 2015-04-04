@@ -40,13 +40,16 @@ body.page-not-found h1
 
 .input-xl
   input-size(auto, $padding-large-vertical, $padding-large-horizontal, $font-size-h2, $line-height-large, $border-radius-large)
+
+.navbar
+  margin-bottom: 0
   
-@media (max-width: $screen-sm-max)
-  .navbar-social-links
-    position: absolute
-    top: 0
-    right: 15px
-  
+.navbar-sticky
+  border: 1px solid #e8e8e8
+  border-width: 0 1px 1px 1px
+  margin: 0
+  padding: 10px 20px
+
 .navbar-container
   position: relative
 
@@ -104,14 +107,11 @@ footer
   margin-bottom: 30px
 
 .blog-post-teaser
-  margin-bottom: 30px
+  margin-bottom: 20px
 
 .image-caption
   color: $gray-light
   font-style: italic
-
-.block-title
-  margin-bottom: 40px
 
 .card3d
   transform: translateZ(0)

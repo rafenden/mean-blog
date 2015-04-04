@@ -48,10 +48,14 @@ html(ng-app="app", ng-controller="SiteCtrl", lang="en")
         ul.nav.navbar-nav
           li: a(href="/") Home
           li: a(href="/blog") Blog
-          //li: a(href="/projects") Projects
+          li: a(href="/page/about") About
+          li: a(href="/page/contact") Contact
+            //li: a(href="/projects") Projects
 
-        p.navbar-text.navbar-right.navbar-social-links
-          span.hidden-xs.hidden-sm I can be found at: 
+    nav.navbar.navbar-static-top.navbar-social-links
+      .container.navbar-container
+        p.navbar-text.navbar-right.navbar-sticky
+          span I can be found at:
           a.navbar-link.social-link(href="https://www.drupal.org/u/rafal.enden")
             i.fa.text-xl.fa-drupal.fa-colorized
             span.sr-only drupal.org
