@@ -47,6 +47,7 @@ class PageAddCtrl extends Controller
     Site.setBodyClass ['page-add', 'page-form']
 
     $scope.customUrl = false
+    $scope.cancelUrl = '/'
 
     $scope.updateSlug = ->
       if !$scope.customUrl
@@ -103,6 +104,7 @@ class PageEditCtrl extends Controller
       Site.setTabs PageHelper.getTabs results
       Site.setBodyClass ['page-edit', 'page-form']
 
+      $scope.cancelUrl = "/page/#{results.slug}"
       $scope.page = results
 
     $scope.updateSlug = $scope.disableAutoUrl = ->

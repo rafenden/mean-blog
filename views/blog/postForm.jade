@@ -47,4 +47,4 @@ form(role="form", name="blogForm")
   .well
     button.btn.btn-primary.btn-lg(type="submit", ng-click="submitPost()" ng-disabled="blogForm.$invalid") <i class="fa fa-floppy-o"></i> Save post
     span.cancel-separator or
-    a(href='/blog/{{post.slug}}') Cancel
+    a(ng-href="{{cancelUrl}}") Cancel

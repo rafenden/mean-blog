@@ -41,4 +41,4 @@ form(role="form", name="pageForm")
   .well
     button.btn.btn-primary.btn-lg(type="submit", ng-click="submitPage()" ng-disabled="pageForm.$invalid") <i class="fa fa-floppy-o"></i> Save page
     span.cancel-separator or
-    a(href='/page/{{page.slug}}') Cancel
+    a(ng-href="{{cancelUrl}}") Cancel

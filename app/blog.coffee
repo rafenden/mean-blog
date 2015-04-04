@@ -68,6 +68,7 @@ class BlogAddCtrl extends Controller
     Site.setBodyClass ['blog-post-add', 'blog-post-form']
 
     $scope.customUrl = false
+    $scope.cancelUrl = '/blog'
 
     $scope.updateSlug = ->
       if !$scope.customUrl
@@ -127,6 +128,7 @@ class BlogEditCtrl extends Controller
       Site.setTabs BlogHelper.getTabs results
       Site.setBodyClass ['blog-post-edit', 'blog-post-form']
 
+      $scope.cancelUrl = "/blog/#{results.slug}"
       $scope.post = results
 
     $scope.updateSlug = $scope.disableAutoUrl = ->
