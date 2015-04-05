@@ -24,8 +24,8 @@ class a extends Directive
 class img extends Directive
   constructor: () ->
     return restrict: 'E', link: ($scope, element, attrs) ->
-      if attrs.src? and attrs.src.indexOf '/images/' is 0
-        element.attr 'src', attrs.src.replace '/images', Config.imagesCdn
+      if attrs.src? and attrs.src.indexOf '/content-images/' is 0
+        element.attr 'src', attrs.src.replace '/content-images', Config.imagesCdn
       # Add captions to images.
       if attrs.title?
         element.after "<div class=\"image-caption\">#{attrs.title}</div>"

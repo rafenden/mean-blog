@@ -33,7 +33,8 @@ app.use (req, res, next) ->
 app.get '/app/:script.js', assets.serveScripts
 app.get '/styles/:style.css', assets.serveStyles
 
-app.use('/favicons', express.static(__dirname + '/favicons'))
+# Serve sattic files
+app.use express.static __dirname + '/public'
 app.use('/bower_components', express.static(__dirname + '/bower_components'))
 
 # Prerender pages for SEO purposes
