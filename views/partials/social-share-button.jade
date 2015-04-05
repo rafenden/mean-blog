@@ -1,0 +1,4 @@
+li
+  a.social-button(ng-href="{{ctrl.link(options)}}", target="_blank", ng-click="ctrl.clickShare($event, options)")
+    span.social-button-text(ng-transclude)
+    span.social-button-counter(ng-show="count") {{count}}

@@ -4,11 +4,19 @@ p.blog-post-created
 
 .blog-post-body(markdown="{{post.body}}")
 
-ul(ng-social-buttons, data-url="post.url()", data-title="post.title")
-  li: strong Share:
-  li.ng-social-facebook Facebook
-  li.ng-social-google-plus Google+
-  li.ng-social-twitter Twitter
+ul.ng-social-buttons(data-url="post.url()", data-title="post.title")
+  li.ng-social-facebook
+    span.sr-only Facebook
+    i.fa.text-xl.fa-facebook
+  li.ng-social-twitter
+    span.sr-only Twitter
+    i.fa.text-xl.fa-twitter
+  li.ng-social-linkedin
+    span.sr-only LinkedIn
+    i.fa.text-xl.fa-linkedin
+  li.ng-social-google-plus
+    span.sr-only Google+
+    i.fa.text-xl.fa-google-plus
 
 h2(ng-show="showComments") Comments
 
