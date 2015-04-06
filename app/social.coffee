@@ -89,9 +89,9 @@ app.directive 'ngSocialButtons', [ '$compile', '$q', '$parse', '$http', '$locati
 app.directive 'ngSocialFacebook', ->
   options =
     counter:
-      url: 'http://graph.facebook.com/fql?q=SELECT+total_count+FROM+link_stat+WHERE+url%3D%22{url}%22' + '&callback=JSON_CALLBACK'
+      url: 'http://graph.facebook.com/?id={url}&callback=JSON_CALLBACK'
       getNumber: (data) ->
-        data.data[0].total_count
+        data.shares
 
     popup:
       url: 'http://www.facebook.com/sharer/sharer.php?u={url}'

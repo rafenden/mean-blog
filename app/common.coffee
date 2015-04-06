@@ -110,3 +110,26 @@ class card3d extends Directive
           '-webkit-transform': "rotateY(#{ax}deg) rotateX(#{ay}deg)"
           '-moz-transform': "rotateY(#{ax}deg) rotateX(#{ay}deg)"
     }
+
+
+# Makes big numbers into short format. 1 million becomes 1m and 1122 becomes 1.1k
+# Based on https://gist.github.com/Chocksy/7202086
+class humanNumber extends Filter
+  constructor: ->
+    return (number) ->
+      if number?
+        abs = Math.abs(number)
+        if abs >= Math.pow(10, 12)
+          # trillion
+          number = (number / Math.pow(10, 12)).toFixed(1) + 't'
+        else if abs < Math.pow(10, 12) and abs >= Math.pow(10, 9)
+          # billion
+          number = (number / Math.pow(10, 9)).toFixed(1) + 'b'
+        else if abs < Math.pow(10, 9) and abs >= Math.pow(10, 6)
+          # million
+          number = (number / Math.pow(10, 6)).toFixed(1) + 'm'
+        else if abs < Math.pow(10, 6) and abs >= Math.pow(10, 3)
+          # thousand
+          number = (number / Math.pow(10, 3)).toFixed(1) + 'k'
+        number
+
