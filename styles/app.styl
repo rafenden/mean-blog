@@ -75,6 +75,11 @@ body.page-not-found h1
     line-height: 100%
     margin-top: 5px
 
+.col-static
+  position: static
+
+.col-relative
+  position: relative
 
 .page-container
   margin-bottom: 40px
@@ -109,3 +114,9 @@ footer
 
 .breadcrumb-current
   float: right
+
+
+// Increase size of body preview
+@media (min-width: 900px * 2)
+  .markdown-preview-wide
+    width: 900px

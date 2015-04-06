@@ -37,10 +37,10 @@ form(role="form", name="blogForm")
     .row
       .col-sm-6
         label Post body
-        .form-control.ace-editor#field-body(ui-ace="{mode: 'markdown', onLoad: aceLoaded}", ng-model="post.body")
+        .form-control.ace-editor.ace-editor-wide#field-body(ui-ace="{mode: 'markdown', onLoad: aceLoaded}", ng-model="post.body")
       .col-sm-6
         label Post body preview
-        .panel.panel-info
+        .panel.panel-info.markdown-preview-wide
           .panel-body.markdown-preview(markdown="{{post.body}}")
 
   // Submit button

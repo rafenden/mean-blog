@@ -31,10 +31,10 @@ form(role="form", name="pageForm")
     .row
       .col-sm-6
         label Page body
-        .form-control.ace-editor#field-body(ui-ace="{mode: 'markdown', onLoad: aceLoaded}", ng-model="page.body")
+        .form-control.ace-editor.ace-editor-wide#field-body(ui-ace="{mode: 'markdown', onLoad: aceLoaded}", ng-model="page.body")
       .col-sm-6
         label Page body preview
-        .panel.panel-info
+        .panel.panel-info.markdown-preview-wide
           .panel-body.markdown-preview(markdown="{{page.body}}")
 
   // Submit button
