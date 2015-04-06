@@ -8,7 +8,6 @@ html(ng-app="app", ng-controller="SiteCtrl", lang="en")
     title(ng-bind="Site.getTitleWithSuffix()")=Config.siteName
 
     // CSS
-    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/readable/bootstrap.min.css")
     link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/monokai_sublime.min.css")
     link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
     link(rel="stylesheet", href="/bower_components/angular-loading-bar/build/loading-bar.min.css")
@@ -40,8 +39,8 @@ html(ng-app="app", ng-controller="SiteCtrl", lang="en")
         .navbar-header
           a.navbar-brand(href="/")
             img.pull-left.card3d(src="/images/avatar-transparent.png")
-            | enden.com
-            sup beta
+            .site-name enden.com
+              sup beta
             small Web development, gadgets and other stuff
 
         // Site navigation
