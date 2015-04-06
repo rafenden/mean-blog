@@ -51,26 +51,6 @@ html(ng-app="app", ng-controller="SiteCtrl", lang="en")
           li: a(href="/page/contact") Contact
             //li: a(href="/projects") Projects
 
-    nav.navbar.navbar-static-top.navbar-social-links
-      .container.navbar-container
-        p.navbar-text.navbar-right.navbar-sticky
-          span I can be found at:
-          a.navbar-link.social-link(href="https://www.drupal.org/u/rafal.enden")
-            i.fa.text-xl.fa-drupal.fa-colorized
-            span.sr-only drupal.org
-          a.navbar-link.social-link(href="https://github.com/rafalenden")
-            i.fa.text-xl.fa-github.fa-colorized
-            span.sr-only GitHub
-          a.navbar-link.social-link(href="https://linkedin.com/in/rafalenden")
-            i.fa.text-xl.fa-linkedin-square.fa-colorized
-            span.sr-only LinkedIn
-          a.navbar-link.social-link(href="https://twitter.com/rafalenden")
-            i.fa.text-xl.fa-twitter.fa-colorized
-            span.sr-only Twitter
-          a.navbar-link.social-link(href="https://plus.google.com/100241749532114106014")
-            i.fa.text-xl.fa-google-plus-square.fa-colorized
-            span.sr-only Google Plus
-
   .container.page-container
     h1(ng-bind="Site.getTitle()", ng-if="Site.getTitle()", ng-hide="Site.isFrontPage()")
 

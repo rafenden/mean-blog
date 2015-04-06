@@ -1,9 +1,24 @@
+ul.ng-social-buttons.ng-social-buttons-small.pull-right(data-url="post.url()", data-title="post.title")
+  li.ng-social-facebook
+    span.sr-only Share
+    i.fa.fa-facebook
+  li.ng-social-twitter
+    span.sr-only Tweet
+    i.fa.fa-twitter
+  li.ng-social-linkedin
+    span.sr-only Share
+    i.fa.fa-linkedin
+  li.ng-social-google-plus
+    span.sr-only Share
+    i.fa.fa-google-plus
+
 p.blog-post-created
   i.fa.fa-calendar
   |  Posted on {{post.createdAt | date:'mediumDate'}}
 
 .blog-post-body(markdown="{{post.body}}")
 
+h2 Liked? Share with others
 ul.ng-social-buttons(data-url="post.url()", data-title="post.title")
   li.ng-social-facebook
     span.share-button-label Share
