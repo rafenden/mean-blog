@@ -2,6 +2,7 @@ $facebook-color = #3C599F
 $twitter-color = #33C6F4
 $linkedin-color = #0097BD
 $google-plus-color = #DD4B39
+$github-color = #333333
 
 // Social share
 .social-share
@@ -11,26 +12,39 @@ $google-plus-color = #DD4B39
 .share-button
   margin-right: 5px
 
+
+
 .ng-social
+  clearfix()
   list-style: none
   margin: 0 0 30px 0
-  overflow: hidden
   padding: 0
-  clear: both
   li
     float: left
-    a
+    .social-button
       text-decoration: none
       display: inline-block
       padding: 5px 10px
       color: white
       text-align: center
-      min-width: 50px
+      min-width: 70px
+      position: relative
+      .share-button-label
+        position: absolute
+        left: -9999px
       &:hover
         opacity: 0.8
+        .share-button-label
+          position: absolute
+          display: block
+          width: 100%
+          left: 0
+          text-align: center
+          bottom: 37px
+          background: $gray
       .social-button-counter
-        position: relative;
-        top: -2px;
+        position: relative
+        top: -2px
         margin-left: 10px
   .ng-social-facebook a
     background-color: $facebook-color
@@ -47,7 +61,7 @@ $google-plus-color = #DD4B39
 .fa-drupal.fa-colorized
   color: $facebook-color
 .fa-github.fa-colorized
-  color: #333333
+  color: $github-color
 .fa-linkedin-square.fa-colorized
   color: $linkedin-color
 .fa-twitter.fa-colorized
