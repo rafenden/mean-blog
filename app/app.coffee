@@ -117,9 +117,9 @@ class Site extends Factory
     }
 
 
-# Site controller
-class SiteCtrl extends Controller
   constructor: ($scope, Site, $location, $window, angularLoad) ->
+# Application controller
+class AppCtrl extends Controller
     $scope.$location = $location
     $scope.Site = Site
 
@@ -131,8 +131,6 @@ class SiteCtrl extends Controller
     $scope.$on '$routeChangeSuccess', (event, current, previous) ->
       Site.setTitle event.currentScope.pageTitle
       Site.setDefaults()
-
-    # $window.scrollTo 0, 0
 
 
 # Not found controller
