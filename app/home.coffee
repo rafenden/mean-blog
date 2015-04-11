@@ -10,4 +10,5 @@ class HomeRoutes extends Config
 class HomeCtrl extends Controller
   constructor: ($scope, Site) ->
     Site.setDefaultTitle()
+    $scope.$parent.loaded = true
 

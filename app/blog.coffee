@@ -45,6 +45,7 @@ class BlogListCtrl extends Controller
     Site.setBreadcrumbs [
       {title: 'Blog'}
     ]
+    $scope.$parent.loaded = true
 
     BlogService.getList().then (results) ->
       $scope.posts = results.posts
@@ -67,6 +68,7 @@ class BlogAddCtrl extends Controller
     ]
     Site.setBodyClass ['blog-post-add', 'blog-post-form']
 
+    $scope.$parent.loaded = true
     $scope.customUrl = false
     $scope.cancelUrl = '/blog'
 
@@ -107,10 +109,10 @@ class BlogViewCtrl extends Controller
         {title: 'Blog', url: '/blog'}
         {title: results.title}
       ]
-      console.log Site
       Site.setTabs BlogHelper.getTabs results
       $scope.post = results
       $scope.showComments = true
+      $scope.$parent.loaded = true
 
 
 # Edit blog post
@@ -130,6 +132,7 @@ class BlogEditCtrl extends Controller
 
       $scope.cancelUrl = "/blog/#{results.slug}"
       $scope.post = results
+      $scope.$parent.loaded = true
 
     $scope.updateSlug = $scope.disableAutoUrl = ->
     $scope.aceLoaded = Site.initAceEditor
@@ -163,6 +166,7 @@ class BlogDeleteCtrl extends Controller
       Site.setTabs BlogHelper.getTabs results
 
       $scope.post = results
+      $scope.$parent.loaded = true
 
     $scope.deletePost = ->
       BlogService.deletePost($scope.post._id).then (results) ->
