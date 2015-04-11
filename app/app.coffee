@@ -123,6 +123,11 @@ class SiteCtrl extends Controller
     $scope.$location = $location
     $scope.Site = Site
 
+    $scope.loaded = false
+
+    $scope.$on '$routeChangeStart', (event, current, previous) ->
+      $scope.loaded = false
+
     $scope.$on '$routeChangeSuccess', (event, current, previous) ->
       Site.setTitle event.currentScope.pageTitle
       Site.setDefaults()
@@ -135,3 +140,4 @@ class NotFoundCtrl extends Controller
   constructor: ($scope, Site) ->
     Site.setTitle '404 Not Found'
     Site.setBodyClass ['page-not-found']
+    $scope.$parent.loaded = true
