@@ -21,6 +21,7 @@ class a extends Directive
           parent.removeClass 'active' if parent
 
 
+# TODO: Create Showdown plugin instead of a directive.
 class img extends Directive
   constructor: () ->
     return restrict: 'E', link: ($scope, element, attrs) ->
