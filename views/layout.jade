@@ -51,7 +51,7 @@ html(ng-app="app", ng-controller="SiteCtrl", lang="en")
           li: a(href="/page/contact") Contact
             //li: a(href="/projects") Projects
 
-  .container.page-container
+  .container.page-container(ng-class="{'ng-route-loaded': loaded}")
     h1(ng-bind="Site.getTitle()", ng-if="Site.getTitle()", ng-hide="Site.isFrontPage()")
 
     ul(class="breadcrumb", ng-if="Site.getBreadcrumbs()")

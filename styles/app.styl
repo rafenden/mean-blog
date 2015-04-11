@@ -10,6 +10,9 @@
 @import 'styles/social'
 @import 'styles/blog'
 
+a:hover:active, a:active
+  opacity: 0.7
+
 .nav-tabs
   margin-bottom: 15px
 
@@ -28,6 +31,9 @@ h1, h2, h3, h4, h5
 
 h1
   margin-bottom: 20px
+
+*
+  transition: opacity 0.3s
 
 body.page-not-found h1
   text-align: center
@@ -84,10 +90,29 @@ body.page-not-found h1
 
 .page-container
   margin-bottom: 40px
+  min-height: 800px
+  *
+    opacity: 0
   
-footer
+.page-container.ng-route-loaded
+  min-height: 400px
+  *
+    opacity: 1
+
+footer section
   padding: 20px 0
-  border-top: 1px solid $gray-lighter
+  &.first-footer
+    border-top: 1px solid $gray-lighter
+    border-bottom: 1px solid $gray-lighter
+    background: #F8F8F8
+    text-align: center
+    a
+      display: inline-block
+      background: #888888
+      color: #F8F8F8
+      font-size: 20px
+      line-height: 100%
+      padding: 5px
 
 .go-back
   display: block

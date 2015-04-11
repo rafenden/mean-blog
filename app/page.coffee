@@ -32,6 +32,7 @@ class PageListCtrl extends Controller
     Site.setBreadcrumbs [
       {title: 'Pages'}
     ]
+    $scope.$parent.loaded = true
 
     PageService.getList().then (results) ->
       $scope.pages = results.pages
@@ -48,6 +49,7 @@ class PageAddCtrl extends Controller
 
     $scope.customUrl = false
     $scope.cancelUrl = '/'
+    $scope.$parent.loaded = true
 
     $scope.updateSlug = ->
       if !$scope.customUrl
@@ -88,6 +90,7 @@ class PageViewCtrl extends Controller
       Site.setTabs PageHelper.getTabs results
       $scope.page = results
       $scope.showComments = true
+      $scope.$parent.loaded = true
 
 
 # Edit page page
@@ -106,6 +109,7 @@ class PageEditCtrl extends Controller
 
       $scope.cancelUrl = "/page/#{results.slug}"
       $scope.page = results
+      $scope.$parent.loaded = true
 
     $scope.updateSlug = $scope.disableAutoUrl = ->
     $scope.aceLoaded = Site.initAceEditor
@@ -138,6 +142,7 @@ class PageDeleteCtrl extends Controller
       Site.setTabs PageHelper.getTabs results
 
       $scope.page = results
+      $scope.$parent.loaded = true
 
     $scope.deletePage = ->
       PageService.deletePage($scope.page._id).then (results) ->
