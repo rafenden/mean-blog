@@ -113,6 +113,7 @@ class Site extends Factory
           wrap: true
           showLineNumbers: false
           showGutter: false
+          showPrintMargin: false
     }
 
 
