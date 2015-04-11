@@ -8,7 +8,7 @@ html(ng-app="app", ng-controller="AppCtrl", lang="en")
     title(ng-bind="Site.getTitleWithSuffix()")=Config.siteName
 
     // CSS
-    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/monokai_sublime.min.css")
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css")
     link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
     link(rel="stylesheet", href="/bower_components/angular-loading-bar/build/loading-bar.min.css")
     link(rel="stylesheet", href="/bower_components/angular-social/angular-social.css")
@@ -34,7 +34,7 @@ html(ng-app="app", ng-controller="AppCtrl", lang="en")
     meta(name="theme-color", content="#ffffff")
 
   body(ng-class="Site.getBodyClass()")
-    nav(role="navigation").navbar.navbar-default.navbar-static-top
+    .navbar.navbar-default.navbar-static-top
       .container.navbar-container
         .navbar-header
           a.navbar-brand(href="/")
@@ -71,7 +71,27 @@ html(ng-app="app", ng-controller="AppCtrl", lang="en")
       block content
           
   footer
-    p.container © 2014-#{new Date().getFullYear()} #{Config.siteName}
+    section.first-footer
+      .container
+        a.social-link(href="https://www.drupal.org/u/rafal.enden")
+          i.fa.fa-drupal
+          span.sr-only drupal.org
+        a.social-link(href="https://github.com/rafalenden")
+          i.fa.fa-github-alt
+          span.sr-only GitHub
+        a.social-link(href="https://linkedin.com/in/rafalenden")
+          i.fa.fa-linkedin
+          span.sr-only LinkedIn
+        a.social-link(href="https://twitter.com/rafalenden")
+          i.fa.fa-twitter
+          span.sr-only Twitter
+        a.social-link(href="https://plus.google.com/100241749532114106014")
+          i.fa.fa-google-plus
+          span.sr-only Google Plus
+
+
+    section.second-footer
+      p.container © 2014-#{new Date().getFullYear()} #{Config.siteName}
 
   // Set up config variables.
   script

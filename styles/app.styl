@@ -49,21 +49,66 @@ body.page-not-found h1
 .input-xl
   input-size(auto, $padding-large-vertical, $padding-large-horizontal, $font-size-h2, $line-height-large, $border-radius-large)
 
+@media (min-width: $screen-sm-min)
+  .navbar.navbar-default
+    .navbar-nav
+      float: right
+      > li > a
+        padding: 14px
+        margin: 16px 6px
+      > li:last-child a
+        margin-right: 0
 
 @media (min-width: $screen-sm-min)
-  .navbar
-    &-nav > li > a
-      padding: 15px
-      margin: 12px 6px
-      border: 1px solid transparent
-      &:hover
-        border: 1px solid $gray-for-borders
-    p
-   &-nav > .active > a, &-nav > .active > a:hover
-    border: 1px solid $gray-for-borders
+  .navbar.navbar-default
+    .navbar-nav > li
+      > a
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -moz-osx-font-smoothing: grayscale;
+        position: relative;
+        overflow: hidden;
+        background: $gray-extra-light
+      > a:before
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $brand-primary;
+        height: 2px;
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+      > a:active:before, &.active > a:before, > a:hover:before, > a:focus:before, > a:active:before
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      > a:active, &.active > a, > a:hover, > a:focus, > a:active
+        background: $gray-extra-light
+      &.active > a:before
+        bottom: -2px;
+        height: 4px;
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
 
 .navbar
   border-width: 0 1px 4px 1px
+  box-shadow: 0 -1px 0 #C4C4C4 inset
+  background: none
+  &-nav > li > a
+    text-transform: uppercase
 
 .navbar-container
   position: relative
@@ -136,3 +181,14 @@ footer section
 @media (min-width: 900px * 2)
   .markdown-preview-wide
     width: 900px
+
+.fa-inverse
+  color: white
+
+.route-loader
+  text-align: center
+  color: $brand-primary
+  padding: 40px 0
+
+.text-xxl
+  font-size: $font-size-xxl
