@@ -12,6 +12,10 @@ function new_tab() {
 
 killall node
 
-new_tab "MongoDB" "cd /Users/rafalenden/Documents/Projects/api.enden.com; mongod --dbpath data/apiDatabase"
-new_tab "api.enden.com" "cd /Users/rafalenden/Documents/Projects/api.enden.com; npm start"
-new_tab "enden.com" "cd /Users/rafalenden/Documents/Projects/enden.com; npm start"
+new_tab "MongoDB" "cd ~/Documents/Projects/api.enden.com; mongod --dbpath data/apiDatabase"
+new_tab "api.enden.com" "cd ~/Documents/Projects/api.enden.com; npm start"
+new_tab "enden.com" "cd ~/Documents/Projects/enden.com; npm start"
+
+sleep 4
+
+open http://localhost:3001/
